@@ -69,16 +69,16 @@ int main() {
        tarjanSCC(u);
 
     // // run Kosaraju's SCC code here
-    // S.clear(); // first pass: record the post-order of original graph
-    // dfs_num.assign(N, UNVISITED);
-    // for (int u = 0; u < N; ++u)
-    //   if (dfs_num[u] == UNVISITED)
-    //     Kosaraju(u, 1);
-    // int numSCC = 0; // second pass: explore SCCs using first pass order
-    // dfs_num.assign(N, UNVISITED);
-    // for (int i = N-1; i >= 0; --i)
-    //   if (dfs_num[S[i]] == UNVISITED)
-    //     numSCC++, Kosaraju(S[i], 2);             // on transposed graph
+    S.clear(); // first pass: record the post-order of original graph
+    dfs_num.assign(N, UNVISITED);
+    for (int u = 0; u < N; ++u)
+      if (dfs_num[u] == UNVISITED)
+        Kosaraju(u, 1);
+    int numSCC = 0; // second pass: explore SCCs using first pass order
+    dfs_num.assign(N, UNVISITED);
+    for (int i = N-1; i >= 0; --i)
+      if (dfs_num[S[i]] == UNVISITED)
+        numSCC++, Kosaraju(S[i], 2);             // on transposed graph
 
     // if SCC is only 1, print 1, otherwise, print 0
     printf("%d\n", numSCC == 1 ? 1 : 0);
